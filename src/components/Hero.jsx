@@ -136,7 +136,7 @@ export default function Hero() {
               scale: 0.97,
               ease: 'power1.out',
             }, 0)
-            .to('#stats', {
+            .to('.hero-stats-wrapper', {
               y: -30,
               opacity: 0.6,
               ease: 'power1.out',
@@ -174,7 +174,7 @@ export default function Hero() {
               opacity: 0,
               ease: 'power2.in',
             }, 1.2)
-            .to(['.hero-scroll-indicator', '.hero-headline-container', '#stats'], {
+            .to(['.hero-scroll-indicator', '.hero-headline-container', '.hero-stats-wrapper'], {
               opacity: 0,
               y: -70,
               ease: 'power1.in',
@@ -211,7 +211,7 @@ export default function Hero() {
               y: -35,
               opacity: 0.3,
             }, 0)
-            .to('#stats', {
+            .to('.hero-stats-wrapper', {
               opacity: 0.4,
               y: -25,
             }, 0)
@@ -251,7 +251,7 @@ export default function Hero() {
               y: -25,
               opacity: 0.25,
             }, 0)
-            .to('#stats', {
+            .to('.hero-stats-wrapper', {
               opacity: 0.3,
               y: -15,
             }, 0)
@@ -345,7 +345,7 @@ export default function Hero() {
                 <ArrowRight className="w-3.5 h-3.5" />
               </a>
               <a
-                href="#stats"
+                href="#features"
                 className="px-5 py-2 rounded-full text-xs font-semibold font-tech tracking-wider text-zinc-300 hover:text-white bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 transition-all duration-300 hover:-translate-y-0.5"
               >
                 VIEW WORK

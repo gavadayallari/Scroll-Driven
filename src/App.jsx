@@ -2,13 +2,23 @@ import React, { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Features from './components/Features';
+import MetricsSection from './components/MetricsSection';
+import About from './components/About';
 import Footer from './components/Footer';
 
 export default function App() {
-  // Ensure smooth scroll restoration and top on refresh
+  // Handle smooth scroll on direct hash URL navigation (e.g. #stats, #features)
   useEffect(() => {
-    window.history.scrollRestoration = 'manual';
-    window.scrollTo(0, 0);
+    if (window.location.hash) {
+      const hash = window.location.hash;
+      const timer = setTimeout(() => {
+        const el = document.querySelector(hash);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 150);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   return (
@@ -29,11 +39,17 @@ export default function App() {
         {/* Viewport 1: Pinned Scroll-Driven Hero Section */}
         <Hero />
 
-        {/* Viewport 2+: Features & Capabilities */}
+        {/* Viewport 2: Features & Capabilities (WORK) */}
         <Features />
+
+        {/* Viewport 3: Dedicated Metrics & Performance Section (METRICS / #stats) */}
+        <MetricsSection />
+
+        {/* Viewport 4: Agency Story & Pillars (ABOUT / #about) */}
+        <About />
       </main>
 
-      {/* Global Footer */}
+      {/* Global Footer & Contact (#contact) */}
       <Footer />
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowUpRight, Sparkles } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,12 +21,29 @@ export default function Navbar() {
     { name: 'CONTACT', href: '#contact' },
   ];
 
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+
+    if (href === '#hero') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.history.pushState(null, '', ' ');
+      return;
+    }
+
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+      window.history.pushState(null, '', href);
+    }
+  };
+
   return (
     <header
       id="main-navbar"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'py-3.5 bg-dark-950/80 backdrop-blur-xl border-b border-white/10 shadow-2xl shadow-black/80'
+          ? 'py-3.5 bg-dark-950/85 backdrop-blur-xl border-b border-white/10 shadow-2xl shadow-black/80'
           : 'py-6 bg-transparent border-b border-transparent'
       }`}
     >
@@ -34,6 +51,7 @@ export default function Navbar() {
         {/* Brand / Logo */}
         <a
           href="#hero"
+          onClick={(e) => handleNavClick(e, '#hero')}
           className="group flex items-center gap-3 focus:outline-none focus:ring-2 focus:ring-accent-cyan/50 rounded-lg p-1"
           aria-label="ITZFIZZ Home"
         >
@@ -59,6 +77,7 @@ export default function Navbar() {
             <a
               key={link.name}
               href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
               className="text-xs font-medium font-tech tracking-widest text-zinc-400 hover:text-white transition-all duration-200 relative py-1 group"
             >
               {link.name}
@@ -71,6 +90,7 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           <a
             href="#contact"
+            onClick={(e) => handleNavClick(e, '#contact')}
             className="hidden sm:inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-semibold font-tech tracking-wider text-black bg-white hover:bg-accent-cyan transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:-translate-y-0.5"
           >
             <span>START A PROJECT</span>
@@ -101,7 +121,7 @@ export default function Navbar() {
             <a
               key={link.name}
               href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={(e) => handleNavClick(e, link.href)}
               className="text-sm font-tech tracking-widest text-zinc-300 hover:text-accent-cyan py-2 border-b border-white/5 transition-colors"
             >
               {link.name}
@@ -109,7 +129,7 @@ export default function Navbar() {
           ))}
           <a
             href="#contact"
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={(e) => handleNavClick(e, '#contact')}
             className="mt-2 w-full text-center py-2.5 rounded-full text-xs font-bold font-tech tracking-wider text-black bg-accent-cyan hover:bg-white transition-colors"
           >
             START A PROJECT

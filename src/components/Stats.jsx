@@ -24,7 +24,7 @@ export default function Stats() {
   ];
 
   return (
-    <div id="stats" className="w-full max-w-5xl mx-auto px-4 relative z-20">
+    <div id="hero-stats" className="hero-stats-wrapper w-full max-w-5xl mx-auto px-4 relative z-20">
       {/* Demo metrics notification badge */}
       <div className="flex items-center justify-center gap-2 mb-2 sm:mb-3">
         <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-[9px] font-mono-code tracking-widest text-zinc-400 bg-white/[0.03] border border-white/[0.08]">

@@ -43,22 +43,54 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-xs font-mono-code text-zinc-400">
               <li>
-                <a href="#hero" className="hover:text-accent-cyan transition-colors">
+                <a
+                  href="#hero"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    window.history.pushState(null, '', ' ');
+                  }}
+                  className="hover:text-accent-cyan transition-colors"
+                >
                   // 01. EXPERIENCE
                 </a>
               </li>
               <li>
-                <a href="#stats" className="hover:text-accent-cyan transition-colors">
+                <a
+                  href="#stats"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('stats')?.scrollIntoView({ behavior: 'smooth' });
+                    window.history.pushState(null, '', '#stats');
+                  }}
+                  className="hover:text-accent-cyan transition-colors"
+                >
                   // 02. METRICS
                 </a>
               </li>
               <li>
-                <a href="#features" className="hover:text-accent-cyan transition-colors">
+                <a
+                  href="#features"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
+                    window.history.pushState(null, '', '#features');
+                  }}
+                  className="hover:text-accent-cyan transition-colors"
+                >
                   // 03. CAPABILITIES
                 </a>
               </li>
               <li>
-                <a href="#about" className="hover:text-accent-cyan transition-colors">
+                <a
+                  href="#about"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                    window.history.pushState(null, '', '#about');
+                  }}
+                  className="hover:text-accent-cyan transition-colors"
+                >
                   // 04. ABOUT
                 </a>
               </li>
