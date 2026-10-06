@@ -1,86 +1,136 @@
 import React from 'react';
-import { Gauge, Compass, Activity } from 'lucide-react';
 
 export default function ScrollVisual() {
   return (
     <div
       id="scroll-visual-container"
-      className="relative w-full max-w-6xl mx-auto flex flex-col items-center justify-center my-2 select-none pointer-events-none"
+      className="relative w-full select-none"
+      style={{ height: '100vh' }}
     >
-      {/* Background runway and light guide */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
-        {/* Radial ambient glow behind car */}
-        <div className="car-ambient-glow w-[350px] md:w-[650px] h-[200px] md:h-[350px] rounded-full bg-gradient-to-r from-accent-cyan/20 via-blue-600/15 to-purple-600/10 blur-[80px] opacity-70 transform -translate-y-4"></div>
-        
-        {/* Speed grid perspective runway */}
-        <div className="absolute bottom-4 w-full h-[120px] bg-gradient-to-t from-accent-cyan/[0.05] via-transparent to-transparent border-b border-accent-cyan/20">
-          <div className="w-full h-full opacity-30 bg-grid-pattern [mask-image:linear-gradient(to_bottom,transparent,black)]"></div>
-        </div>
-
-        {/* Dynamic laser speed trail running behind the vehicle */}
+      {/* TOP STAT CARDS ROW */}
+      <div className="absolute top-[18%] left-[12%] w-full flex items-start justify-center gap-12 px-8 z-20">
         <div
-          id="car-speed-trail"
-          className="absolute top-1/2 left-0 h-[3px] bg-gradient-to-r from-transparent via-accent-cyan/80 to-accent-cyan rounded-full opacity-60 shadow-[0_0_15px_#00f0ff] will-change-transform origin-left"
-          style={{ width: '0%' }}
-        />
+          id="stat-card-1"
+          className="stat-card-scroll rounded-xl px-6 py-10 min-w-[180px] text-center"
+          style={{
+            backgroundColor: '#D4E157',
+            opacity: 0,
+            transform: 'translateY(30px)',
+          }}
+        >
+          <div className="text-4xl font-black text-dark-900">58%</div>
+          <div className="text-2xs font-semibold text-dark-800 mt-1 font-tech">Increase in pick up point use</div>
+        </div>
+        <div
+          id="stat-card-2"
+          className="stat-card-scroll rounded-xl px-6 py-10 min-w-[180px] text-center"
+          style={{
+            backgroundColor: '#4A4A4A',
+            opacity: 0,
+            transform: 'translateY(30px)',
+          }}
+        >
+          <div className="text-4xl font-black text-white">27%</div>
+          <div className="text-2xs font-semibold text-zinc-300 mt-1 font-tech">Increase in pick up point use</div>
+        </div>
       </div>
 
-      {/* Main Vehicle Container */}
+      {/* DARK ROAD STRIP */}
       <div
-        id="car-wrapper"
-        className="relative z-10 w-[80%] sm:w-[70%] md:w-[62%] lg:w-[54%] max-w-[680px] mx-auto will-change-transform"
+        id="road-strip"
+        className="absolute left-0 top-[40%] w-full flex items-center overflow-hidden"
+        style={{
+          // top: '30%',
+          height: '28%',
+          backgroundColor: '#1a1a1a',
+        }}
       >
-        {/* Headlight beam projection effect */}
+        {/* GREEN EXPANDING BANNER */}
         <div
-          id="car-headlight-beam"
-          className="absolute -bottom-8 -left-16 w-44 md:w-64 h-32 bg-gradient-to-l from-transparent via-accent-cyan/20 to-transparent blur-xl -rotate-12 pointer-events-none opacity-80"
-        />
-
-        {/* Telemetry floating HUD chip - positioned cleanly below car image or to the right */}
-        <div
-          id="car-telemetry"
-          className="absolute -bottom-3 right-0 sm:right-4 flex items-center gap-2 px-3 py-1 rounded-full bg-dark-950/90 border border-accent-cyan/30 backdrop-blur-md shadow-[0_0_15px_rgba(0,240,255,0.15)] text-[9px] font-mono-code text-accent-cyan tracking-wider pointer-events-none z-20"
+          id="green-banner"
+          className="absolute left-0 top-1/2 -translate-y-1/2 flex items-center overflow-hidden z-10 rounded-r-lg"
+          style={{
+            backgroundColor: '#2CFF6A',
+            width: '0%',
+            height: '100%',
+          }}
         >
-          <span className="flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan animate-pulse"></span>
-            DRIVE // KINETIC
-          </span>
-          <span className="text-zinc-600">|</span>
-          <span className="text-zinc-300">SCROLL SYNC</span>
+          <h1
+            id="banner-text"
+            className="whitespace-nowrap font-display font-black text-black uppercase tracking-wider pl-20"
+            style={{
+              fontSize: 'clamp(3rem, 4vw, 6rem)',
+              lineHeight: 1,
+            }}
+          >
+            WELCOME ITZFIZZ
+          </h1>
         </div>
 
-        {/* The Sports Car Visual */}
-        <div className="relative group">
+        {/* CAR ON THE ROAD */}
+        <div
+          id="car-wrapper"
+          className="absolute z-20 will-change-transform"
+          style={{
+            left: '-15%',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            width: '22%',
+            maxWidth: '320px',
+            minWidth: '180px',
+          }}
+        >
           <picture>
             <source srcSet="./car.webp" type="image/webp" />
             <img
               id="car-image"
               src="./car.png"
-              alt="ITZFIZZ Cyber Hypercar - Creative Web Experience"
-              className="w-full h-auto max-h-[320px] md:max-h-[360px] object-contain drop-shadow-[0_15px_30px_rgba(0,0,0,0.9)] filter brightness-105 contrast-110 will-change-transform mx-auto"
+              alt="ITZFIZZ Cyber Hypercar - Scroll-Driven Animation"
+              className="w-full h-auto object-contain drop-shadow-[0_10px_30px_rgba(0,0,0,0.7)]"
+              style={{ transform: 'rotate(0deg)' }}
               loading="eager"
             />
           </picture>
-
-          {/* Underglow neon chassis shadow */}
-          <div className="absolute -bottom-2 inset-x-8 h-6 bg-accent-cyan/25 blur-lg rounded-full pointer-events-none transform scale-y-50"></div>
-          {/* Ground contact shadow */}
-          <div className="absolute -bottom-1 inset-x-4 h-4 bg-black/90 blur-md rounded-full pointer-events-none"></div>
-        </div>
-
-        {/* Dynamic coordinate crosshair */}
-        <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 text-[10px] font-mono-code text-zinc-400">
-          <span className="flex items-center gap-1">
-            <Compass className="w-3 h-3 text-accent-cyan" />
-            POS: [CENTER STAGE]
-          </span>
-          <span className="text-zinc-600">&bull;</span>
-          <span className="flex items-center gap-1">
-            <Gauge className="w-3 h-3 text-accent-cyan" />
-            AERODYNAMIC // FLUID
-          </span>
         </div>
       </div>
+
+      {/* BOTTOM STAT CARDS ROW */}
+      <div className="absolute bottom-[8%] left-[12%] w-full flex items-end justify-center gap-6 px-8 z-20">
+        <div
+          id="stat-card-3"
+          className="stat-card-scroll rounded-xl px-6 py-10 min-w-[180px] text-center"
+          style={{
+            backgroundColor: '#81D4FA',
+            opacity: 0,
+            transform: 'translateY(-30px)',
+          }}
+        >
+          <div className="text-4xl font-black text-dark-900">23%</div>
+          <div className="text-2xs font-semibold text-dark-800 mt-1 font-tech">Decreased in customer phone calls</div>
+        </div>
+        <div
+          id="stat-card-4"
+          className="stat-card-scroll rounded-xl px-6 py-10 min-w-[180px] text-center"
+          style={{
+            backgroundColor: '#FF7043',
+            opacity: 0,
+            transform: 'translateY(-30px)',
+          }}
+        >
+          <div className="text-4xl font-black text-white">40%</div>
+          <div className="text-2xs font-semibold text-zinc-100 mt-1 font-tech">Decreased in customer phone calls</div>
+        </div>
+      </div>
+
+      {/* GRAY BACKGROUND AREAS (top and bottom) */}
+      <div
+        className="absolute left-0 w-full pointer-events-none"
+        style={{ top: 0, height: '30%', backgroundColor: '#C0C0C0' }}
+      />
+      <div
+        className="absolute left-0 w-full pointer-events-none"
+        style={{ bottom: 0, height: '30%', backgroundColor: '#C0C0C0' }}
+      />
     </div>
   );
 }
